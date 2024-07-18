@@ -1,4 +1,3 @@
-const heading = document.createElement("h2");
-heading.className="header"
-heading.textContent = "Hello World from h2";
-document.getElementById("root").append(heading)
+const reactHeading = React.createElement("h1",{className : "head",children : "Hey"});
+console.log(reactHeading)
+ReactDOM.createRoot(document.getElementById("root")).render(reactHeading);
