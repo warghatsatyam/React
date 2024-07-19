@@ -1,3 +1,4 @@
-const reactHeading = React.createElement("h1",{className : "head",children : "Hey"});
-console.log(reactHeading)
+const reactHeading = (<h1 class="heading">Hello How are you</h1>);
 ReactDOM.createRoot(document.getElementById("root")).render(reactHeading);
+
+
