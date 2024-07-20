@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Starting with React App</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<html>
+    <head>
+        <title>React Component</title>
+        <!-- Include all the CDNs here -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body>
-    <div id="root">
-
-    </div>
-    <script src="index.js" type="text/babel">
-
-    </script>
-</body>
+    </head>
+    <body>
+      <div id="root"></div>
+      <script type="text/babel">
+        function NewApp(){
+        	return (
+            	<>
+          			<h1>React Project</h1>
+                    <p>Skills used to make this project</p>
+                    <ol>
+          				<li>HTML</li>
+          				<li>JavaScript</li>
+                        <li>CSS</li>
+          			</ol>
+          		</>
+            )
+        }
+        const App = ()=>
+            <>
+                <h1>Hello</h1>
+                <p>World</p>
+            </>
+        
+        ReactDOM.createRoot(document.getElementById("root")).render(<><App/> <NewApp/></>)
+      </script>
+    </body>
 </html>
