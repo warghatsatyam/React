@@ -16,6 +16,17 @@
       img {
         width: 250px;
       }
+      button {
+        outline: none;
+        border: none;
+        width: 150px;
+        padding: 10px;
+        background-color: #f00;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
     </style>
 
   </head>
@@ -44,6 +55,7 @@
 
       const Home = () => (
         <div>
+          <button>Buy Premium</button>
           <h3>Welcome to home!</h3>
           <h5>Enjoy this catalog of pictures</h5>
           {IMAGES.map((i) => (
@@ -52,16 +64,24 @@
         </div>
       );
 
-      const App = () => {
-        // create variable here
-        var loginStatus = true;
-         return loginStatus?<Home/>:<Login/>
+      // create premium account component here to render the button 
 
-        // return with ternary operator here
+      const App = () => {
+
+        let name='Satyam';
+        const isLoggedIn = false;
+
+        return (
+          <>
+        	{} 
+          	<h1>Hello {name && isLoggedIn?name:"Guest"}</h1>
+            {name && isLoggedIn?<Home/>:<Login/>}
+          </>
+        );
       };
 
       const rootElement = ReactDOM.createRoot(document.getElementById("root"));
-      rootElement.render(<App/>);
+      rootElement.render(<App />);
     </script>
 
   </body>
