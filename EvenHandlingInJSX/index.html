@@ -22,26 +22,26 @@
     <script type="text/babel">
         let score   = 0;
         let wickets = 0;
-
-        function addOne(){
-            score+=1
-            console.log(score)
-            rootElement.render(<App />)
-        }
+        let ballWiseRes = [];
 
         function addNum(num){
             if (wickets < 10){
                 score+=num;
+                ballWiseRes.push(num)
             }
             console.log("Num: ",num)
             rootElement.render(<App />)
+            console.log(ballWiseRes)
         }
 
         function addWicket(){
             if(wickets <10){
                 wickets+=1
+                ballWiseRes.push('W')
             }
+            
             rootElement.render(<App />)
+            console.log(ballWiseRes)
         }
         const App = () => (
         <>
@@ -49,13 +49,13 @@
             <h2>SCORE: {score}/{wickets}</h2>
 
             <div>
-                <button onClick = {()=> addNum(1)} >1</button>
+                <button onClick = {()=> addNum(0)}>0</button>
+                <button onClick = {()=> addNum(1)}>1</button>
                 <button onClick = {()=> addNum(2)}>2</button>
                 <button onClick = {()=> addNum(3)}>3</button>
                 <button onClick = {()=> addNum(4)}>4</button>
-                <button onClick = {()=> addNum(5)}>5</button>
                 <button onClick = {()=> addNum(6)}>6</button>
-                <button onClick = {addWicket} >Wicket</button>
+                <button onClick = {()=> {addWicket()}} >Wicket</button>
             </div>
         </>
         )
