@@ -37,25 +37,37 @@
 
     <script type="text/babel">
       // Do not change the classNames of the elements from the default markup
-
+      let name;
+      let email;
+      let about;
       const Card = () => (
         <div className="card">
-          <h3>Name: </h3>
-          <p>Email: </p>
-          <p>About: </p>
+          <h3>Name: {name} </h3>
+          <p>Email: {email} </p>
+          <p>About: {about} </p>
         </div>
       );
 
-      function nameChange(){
-        var val = document.getElementById('name').innerText
-        console.log("val",{val})
+      function handleNameChange(e){
+          name = e.target.value;
+          rootElement.render(<App />);
       }
+      function handleEmailChange(e){
+          email = e.target.value;
+          rootElement.render(<App />);
+      }
+      function handleAboutChange(e){
+          about = e.target.value;
+          rootElement.render(<App />);
+      }
+      
       const App = () => (
         <div className="App">
+          <Card />
           <div className="inputs">
-            <input placeholder="Name" id="name" onChange={nameChange}/>
-            <input type="email" placeholder="Email" />
-            <textarea placeholder="About"></textarea>
+            <input placeholder="Name" id="name" onChange={handleNameChange}/>
+            <input type="email" placeholder="Email" onChange={handleEmailChange} />
+            <textarea placeholder="About" onChange={handleAboutChange}></textarea>
           </div>
         </div>
       );

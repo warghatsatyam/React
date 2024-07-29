@@ -21,39 +21,33 @@
         let score   = 0;
         let wickets = 0;
         let ballWiseRes = [];
+        let hit = 0;
 
         const style ={
             color:'red'
         }
 
         function addNum(num){
-            if (wickets < 10){
-                score+=num;
-                ballWiseRes.push(num)
-            }
-            console.log("Num: ",num)
+            hit = num
             rootElement.render(<App />)
-            console.log(ballWiseRes)
         }
 
-        function addWicket(){
-            if(wickets <10){
-                wickets+=1
-                ballWiseRes.push('W')
-            }
-            
+        function addWicket(wicket){
+            hit = wicket
             rootElement.render(<App />)
-            console.log(ballWiseRes)
         }
 
         function handleSubmit(event){
             event.preventDefault();
             console.log("event",event)
+            ballWiseRes.unshift(hit)
+            rootElement.render(<App />)
         }
+
 
         const SubmitForm = ()=> (
             <form onClick={handleSubmit}>
-                <input/>
+                <input value={ hit }/>
                 <input/>
                 <button>Submit</button>
             </form>
@@ -71,13 +65,16 @@
                 <button onClick = {()=> addNum(3)}>3</button>
                 <button onClick = {()=> addNum(4)}>4</button>
                 <button onClick = {()=> addNum(6)}>6</button>
-                <button onClick = {()=> {addWicket()}} >Wicket</button>
+                <button onClick = {()=> {addWicket('W')}} >Wicket</button>
             </div>
-            <Result />
             <br/>
             <br/>
-            <hr/>
             <SubmitForm />
+            <hr/>
+            {ballWiseRes.map((ele,index) => (
+                <p key={index}>{ele}</p>
+        ))}
+            
         </>
         )
 
