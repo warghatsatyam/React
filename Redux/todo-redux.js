@@ -7,7 +7,7 @@ const TOGGLE_TODO="Toggle TODO";
 
 // Action Creaters
 const addTodo = (text)=>({text,type:ADD_TODO});
-const toggleToDo = (text)=>({text,type:TOGGLE_TODO});
+const toggleToDo = (index)=>({index,type:TOGGLE_TODO});
 
 
 // Reducers
@@ -30,16 +30,15 @@ function toDoReducer(state=initialState,action){
                 ]
             }
         case TOGGLE_TODO:
-            return {
-                ...state,
-                todos:todos.map((todo,i)=>{
-                    if (i==action.index){
-                        todo.completed=!todo.completed;
-                    }
-                    return todo
-
-                })
+    return {
+        ...state,
+        todos: state.todos.map((todo, i) => {
+            if (i === action.index) {
+                return { ...todo, completed: !todo.completed };  // ✅ Return new object
             }
+            return todo;
+        })
+    }
         default:
             return state
     }
