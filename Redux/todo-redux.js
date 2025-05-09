@@ -47,3 +47,14 @@ function toDoReducer(state=initialState,action){
 
 // Creating Store
 const store = redux.createStore(toDoReducer);
+
+// dispatch Actions
+store.dispatch(addTodo("Studying React Redux"));
+store.dispatch(addTodo("Dockerizing Django Application"));
+
+store.dispatch(toggleToDo(0));
+
+
+// Reading data from state (selectors)
+
+console.log(store.getState());
